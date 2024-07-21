@@ -123,9 +123,8 @@ gather_system_info() {
   local virtual_machine=$(system_profiler SPHardwareDataType | grep "Model Identifier" | awk '{print $3}' | grep -i "virtual" || echo "Not a virtual machine")
 
   
-
   # show a summary of the gathered information
-  echo '{
+  local json_content='{
     "user": "'$user'",
     "user_info": ['"$user_info"'],
     "geolocation_info": ['"$geolocation_info"'],
@@ -157,14 +156,13 @@ gather_system_info() {
     "virtual_machine": "'$virtual_machine'"
 }
 '
+ echo "$json_content" > "$JSON_OUTPUT_FILE"
+   log_info "System information saved to $JSON_OUTPUT_FILE"
+
+
 }
 
-# Function to save JSON output to file
-save_json_to_file() {
-  local json_content=$1
-  echo "$json_content" > "$JSON_OUTPUT_FILE"
-  log_info "System information saved to $JSON_OUTPUT_FILE"
-}
+
 
 
 # Start gathering system information in the background 
@@ -176,8 +174,6 @@ pid=$!
 # Show spinner while gathering system information
 spinner $pid
 
-# Save the JSON output to a file
-save_json_to_file "$system_info_json"
 
 # Display a user-friendly message
 echo "✅ System information has been gathered and saved to $JSON_OUTPUT_FILE"
