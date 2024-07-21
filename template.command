@@ -30,10 +30,17 @@ log_start "Starting the script for  $SCRIPT_NAME   "
 # 
 
 
+# define the function here
+# function_name() { ... 
 
+# Call the function in the background 
+#(function_name) & 
 
+# Get the PID of the called function 
+#pid=$!
 
-
+# Show spinner while gathering system information
+# spinner $pid
 
 
 
