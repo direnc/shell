@@ -167,7 +167,7 @@ save_json_to_file() {
 }
 
 
-# Start gathering system information in the background and write to the named pipe
+# Start gathering system information in the background 
 (gather_system_info) & 
 
 # Get the PID of the gather_system_info process
