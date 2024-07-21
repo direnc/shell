@@ -1,0 +1,10 @@
+.env
+.env*
+
+manuals
+manuals/*
+
+logs
+logs/*
+
+system_info.json
