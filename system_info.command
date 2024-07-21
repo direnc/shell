@@ -166,12 +166,15 @@ save_json_to_file() {
   log_info "System information saved to $JSON_OUTPUT_FILE"
 }
 
-# Show spinner while gathering system information
-gather_system_info & pid=$!
-spinner $pid
 
-# Capture the JSON output
-system_info_json=$(gather_system_info)
+# Start gathering system information in the background and write to the named pipe
+(gather_system_info) & 
+
+# Get the PID of the gather_system_info process
+pid=$!
+
+# Show spinner while gathering system information
+spinner $pid
 
 # Save the JSON output to a file
 save_json_to_file "$system_info_json"
@@ -180,7 +183,6 @@ save_json_to_file "$system_info_json"
 echo "✅ System information has been gathered and saved to $JSON_OUTPUT_FILE"
 
 log_end "Ending the script for $SCRIPT_NAME"
-
 
   # check for potential system updates on Mac Os
   #if command -v softwareupdate &> /dev/null; then
