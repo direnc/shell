@@ -157,7 +157,7 @@ gather_system_info() {
 }
 '
  echo "$json_content" > "$JSON_OUTPUT_FILE"
-   log_info "System information saved to $JSON_OUTPUT_FILE"
+ log_info "System information saved to $JSON_OUTPUT_FILE"
 
 
 }

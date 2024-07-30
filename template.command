@@ -3,7 +3,6 @@
 # start by adding the script name 
 SCRIPT_NAME="enter_script_name_here"
 
-
 # if .env is not found, exit
 if [ ! -f .env ]; then
   echo "❌ Error: .env file not found."
@@ -41,9 +40,6 @@ log_start "Starting the script for  $SCRIPT_NAME   "
 
 # Show spinner while gathering system information
 # spinner $pid
-
-
-
 
 
 

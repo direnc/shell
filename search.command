@@ -18,7 +18,7 @@ sudo -v
 # search for the term  in "~" and its subdirectories FILE NAMES, and save the output to a file
 
 # Start the search in the background
-(sudo find ~ -type f -name "*$SEARCH_TERM*" -exec echo "[PID $$] {}" \; > search_results.txt) &
+(sudo find ~ -type f -name "*$SEARCH_TERM*" 2>/dev/null -exec echo "[PID $$] {}" \; > search_results.txt) &
 
 # Get the PID of the search process
 search_pid=$!
